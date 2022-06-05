@@ -24,13 +24,12 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 
 public record ComponentSource(Function<String, Component> labelSource, Function<String, Component> toolTipSource, BiFunction<String, String, Component> subLabelSource) {
 	public static ComponentSource of(String labelPrefix, String tooltipPrefix) {
 		return new ComponentSource(
-				str -> new TranslatableComponent(labelPrefix + str),
-				str -> new TranslatableComponent(tooltipPrefix + str),
-				(str, val) -> new TranslatableComponent(labelPrefix + str + "." + val));
+				str -> Component.translatable(labelPrefix + str),
+				str -> Component.translatable(tooltipPrefix + str),
+				(str, val) -> Component.translatable(labelPrefix + str + "." + val));
 	}
 }

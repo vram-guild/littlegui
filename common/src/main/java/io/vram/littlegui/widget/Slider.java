@@ -26,7 +26,7 @@ import java.util.function.IntConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 
@@ -55,7 +55,7 @@ public class Slider<S extends BaseScreen<?>> extends AbstractSliderButton implem
 
 	@Override
 	protected void updateMessage() {
-		this.setMessage(new TextComponent(baseLabel + intValue));
+		this.setMessage(Component.literal(baseLabel + intValue));
 	}
 
 	@Override
