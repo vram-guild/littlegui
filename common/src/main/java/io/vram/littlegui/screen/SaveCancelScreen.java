@@ -46,13 +46,13 @@ public abstract class SaveCancelScreen<T> extends BaseScreen<T> {
 	protected void init() {
 		super.init();
 
-		addRenderableWidget(new Button(width / 2 - 120 - padding / 2, height - lineHeight, 120, controlHeight, cancelLabel, (buttonWidget) -> {
+		addRenderableWidget(Button.builder(cancelLabel, (buttonWidget) -> {
 			minecraft.setScreen(parent);
-		}));
+		}).bounds(width / 2 - 120 - padding / 2, height - lineHeight, 120, controlHeight).build());
 
-		addRenderableWidget(new Button(width / 2 + padding / 2, height - lineHeight, 120, controlHeight, saveLabel, (buttonWidget) -> {
+		addRenderableWidget(Button.builder(saveLabel, (buttonWidget) -> {
 			saveValues();
 			minecraft.setScreen(parent);
-		}));
+		}).bounds(width / 2 + padding / 2, height - lineHeight, 120, controlHeight).build());
 	}
 }

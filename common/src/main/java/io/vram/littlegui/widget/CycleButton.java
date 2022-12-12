@@ -59,7 +59,7 @@ public class CycleButton<V extends Enum<?>, S extends BaseScreen<?>> extends Abs
 	}
 
 	@Override
-	public void updateNarration(NarrationElementOutput var1) {
+	public void updateWidgetNarration(NarrationElementOutput var1) {
 		// TODO implement?
 	}
 
