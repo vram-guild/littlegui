@@ -24,8 +24,6 @@ import java.util.List;
 
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.util.FormattedCharSequence;
 
@@ -41,15 +39,6 @@ public class Toggle<S extends BaseScreen<?>> extends Checkbox implements SavingW
 		this.parentScreen = parentScreen;
 		this.saveFunc = saveFunc;
 		toolTip = parentScreen.font().split(parentScreen.componentSource.toolTipSource().apply(baseKey), 200);
-	}
-
-	@Override
-	public void renderButton(PoseStack matrices, int mouseX, int mouseY, float delta) {
-		super.renderButton(matrices, mouseX, mouseY, delta);
-
-		if (isHovered) {
-			parentScreen.renderTooltip(matrices, toolTip, mouseX, mouseY);
-		}
 	}
 
 	@Override

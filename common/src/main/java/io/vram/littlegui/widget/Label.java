@@ -20,12 +20,10 @@
 
 package io.vram.littlegui.widget;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 import io.vram.littlegui.screen.BaseScreen;
-import io.vram.littlegui.screen.SaveCancelScreen;
 
 public class Label {
 	protected final BaseScreen<?> parentScreen;
@@ -40,7 +38,7 @@ public class Label {
 		this.top = top;
 	}
 
-	public void render(PoseStack matrixStack) {
-		SaveCancelScreen.drawCenteredString(matrixStack, parentScreen.font(), label, center, top, 16777215);
+	public void render(GuiGraphics guiGraphics) {
+		guiGraphics.drawCenteredString(parentScreen.font(), label, center, top, 16777215);
 	}
 }

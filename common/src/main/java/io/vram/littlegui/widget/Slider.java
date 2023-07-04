@@ -23,8 +23,6 @@ package io.vram.littlegui.widget;
 import java.util.List;
 import java.util.function.IntConsumer;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
@@ -76,15 +74,6 @@ public class Slider<S extends BaseScreen<?>> extends AbstractSliderButton implem
 	protected static double normalize(int min, int max, int value) {
 		value = Mth.clamp(value, min, max);
 		return (value - min) / (double) (max - min + 1);
-	}
-
-	@Override
-	public void renderButton(PoseStack matrices, int mouseX, int mouseY, float delta) {
-		super.renderButton(matrices, mouseX, mouseY, delta);
-
-		if (isHovered) {
-			parentScreen.renderTooltip(matrices, toolTip, mouseX, mouseY);
-		}
 	}
 
 	@Override

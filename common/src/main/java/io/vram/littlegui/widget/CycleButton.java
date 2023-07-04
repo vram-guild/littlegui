@@ -23,8 +23,7 @@ package io.vram.littlegui.widget;
 import java.util.List;
 import java.util.function.Consumer;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
@@ -35,7 +34,6 @@ import net.minecraft.util.Mth;
 import io.vram.littlegui.screen.BaseScreen;
 
 public class CycleButton<V extends Enum<?>, S extends BaseScreen<?>> extends AbstractButton implements SavingWidget {
-	private final S parentScreen;
 	protected final List<FormattedCharSequence> toolTip;
 	protected final V[] values;
 	protected final Component[] valueLabels;
@@ -44,7 +42,6 @@ public class CycleButton<V extends Enum<?>, S extends BaseScreen<?>> extends Abs
 
 	public CycleButton(S parentScreen, int left, int top, int width, int height, String baseKey, Class<V> e, V value, Consumer<V> saveFunc) {
 		super(left, top, width, height, parentScreen.componentSource.labelSource().apply(baseKey));
-		this.parentScreen = parentScreen;
 		this.saveFunc = saveFunc;
 		this.values = e.getEnumConstants();
 		this.value = value;
@@ -88,12 +85,8 @@ public class CycleButton<V extends Enum<?>, S extends BaseScreen<?>> extends Abs
 	}
 
 	@Override
-	public void renderButton(PoseStack matrices, int mouseX, int mouseY, float delta) {
-		super.renderButton(matrices, mouseX, mouseY, delta);
-
-		if (isHovered) {
-			parentScreen.renderTooltip(matrices, toolTip, mouseX, mouseY);
-		}
+	public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+		super.renderWidget(guiGraphics, mouseX, mouseY, delta);
 	}
 
 	@Override

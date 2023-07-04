@@ -26,9 +26,8 @@ import java.util.function.IntConsumer;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -122,14 +121,14 @@ public abstract class BaseScreen<T> extends Screen {
 	protected abstract void addControls();
 
 	@Override
-	public void render(PoseStack matrixStack, int i, int j, float f) {
-		renderDirtBackground(i);
+	public void render(GuiGraphics guiGraphics, int i, int j, float f) {
+		renderDirtBackground(guiGraphics);
 
 		for (final var l : labels) {
-			l.render(matrixStack);
+			l.render(guiGraphics);
 		}
 
-		super.render(matrixStack, i, j, f);
+		super.render(guiGraphics, i, j, f);
 	}
 
 	@SuppressWarnings("unchecked")
